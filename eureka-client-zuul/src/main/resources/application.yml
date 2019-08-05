@@ -34,7 +34,7 @@ security:
       client-secret: secret
     resource:
       jwt:
-        key-value: springcloud123
+        key-value: springcloud123 #这里的值如果跟authserver中的JwtAccessTokenConverter不一致会导致一直重定向
   basic:
     enabled: false
 
