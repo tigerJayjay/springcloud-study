@@ -1,0 +1,37 @@
+server:
+  port: 1119
+#prefix不要和项目名一样
+zuul:
+  routes:
+    producer:
+      path: /get
+      serviceId: producer
+    sensitiveHeaders: Cookie,Set-Cookie
+  #prefix: /zu
+  #servlet-path: / #servlet-path默认为/zuul
+  #ignored-services: producer
+  add-host-header: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://liujie:123456@server1:8089/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["*"]
+security:
+  oauth2:
+    client:
+      access-token-uri: http://localhost:1114/oauth/token #令牌端点
+      user-authorization-uri: http://localhost:1114/oauth/authorize #授权端点
+      client-id: zuul_server
+      client-secret: secret
+    resource:
+      jwt:
+        key-value: sprintcloud123
+spring:
+  application:
+    name: zuul
