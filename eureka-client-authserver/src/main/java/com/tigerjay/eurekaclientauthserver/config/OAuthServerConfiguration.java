@@ -15,8 +15,8 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 /**
  * 授权服务器配置
  */
-@EnableDiscoveryClient
-@SpringBootApplication
+@Configuration
+@EnableAuthorizationServer
 public class OAuthServerConfiguration extends AuthorizationServerConfigurerAdapter {
     @Autowired
     private AuthenticationManager authenticationManager;
