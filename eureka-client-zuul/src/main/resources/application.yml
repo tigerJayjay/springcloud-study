@@ -1,19 +1,45 @@
 spring:
   application:
     name: zuul-server
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    timeout: 5000
+    jedis:
+      pool:
+        max-active: 8
+        min-idle: 1
+        max-idle: 8
+        max-wait: 2000
+
 server:
   port: 1119
+
 #prefix不要和项目名一样
 zuul:
   routes:
     producer:
       path: /get
       serviceId: producer
-  sensitiveHeaders: Cookie,Set-Cookie
+  #sensitiveHeaders: Cookie,Set-Cookie
   #prefix: /zu
   #servlet-path: / #servlet-path默认为/zuul
   #ignored-services: producer
   add-host-header: true
+  ratelimit:
+    key-prefix: spring-cloud-book #按粒度拆分的临时变量key前缀
+    enabled: true
+    repository: redis
+    behind-proxy: true
+    default-policy:
+      limit: 2
+      quota: 1
+      refresh-interval: 3
+      type:
+        - user
+        - orign
+        - url
 
 eureka:
   client:
@@ -25,6 +51,7 @@ management:
     web:
       exposure:
         include: ["*"]
+
 security:
   oauth2:
     client:
@@ -37,4 +64,5 @@ security:
         key-value: springcloud123 #这里的值如果跟authserver中的JwtAccessTokenConverter不一致会导致一直重定向
   basic:
     enabled: false
+
 
