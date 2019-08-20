@@ -39,7 +39,7 @@ public class OAuthServerConfiguration extends AuthorizationServerConfigurerAdapt
                 .secret("secret")
                 .scopes("WRIGTH").autoApprove(true)
                 .authorities("WRIGTH_READ","WRIGTH_WRITE")
-                .authorizedGrantTypes("implicit","refresh_token","password","authorization_code");
+                .authorizedGrantTypes("implicit","refresh_token","password","authorization_code");//客户端使用的授权类型，这里使用的是password,需要配置authenticationManager
     }
 
 
