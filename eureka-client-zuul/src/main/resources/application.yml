@@ -20,13 +20,13 @@ server:
 zuul:
   routes:
     producer:
-      path: /get
+      path: /producer/*
       serviceId: producer
-  #sensitiveHeaders: Cookie,Set-Cookie
+  sensitiveHeaders: #如果不配置 权限会无法传到下级服务 导致访问下级服务无权限
   #prefix: /zu
   #servlet-path: / #servlet-path默认为/zuul
   #ignored-services: producer
-  add-host-header: true
+  #add-host-header: true
   ratelimit:
     key-prefix: spring-cloud-book #按粒度拆分的临时变量key前缀
     enabled: true
@@ -62,7 +62,5 @@ security:
     resource:
       jwt:
         key-value: springcloud123 #这里的值如果跟authserver中的JwtAccessTokenConverter不一致会导致一直重定向
-  basic:
-    enabled: false
 
 

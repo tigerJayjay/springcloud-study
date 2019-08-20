@@ -37,7 +37,7 @@ public class OAuthServerConfiguration extends AuthorizationServerConfigurerAdapt
                 .inMemory()
                 .withClient("zuul_server") //zuul中配置的client-id
                 .secret("secret")
-                .scopes("WRIGTH","read").autoApprove(true)
+                .scopes("WRIGTH").autoApprove(true)
                 .authorities("WRIGTH_READ","WRIGTH_WRITE")
                 .authorizedGrantTypes("implicit","refresh_token","password","authorization_code");
     }

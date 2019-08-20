@@ -21,9 +21,14 @@ public class EurekaClientZuulApplication extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/login").permitAll()
-                .anyRequest().authenticated(). //其他的路径需要认证后的用户可以访问
-                and().csrf().disable();
+        http.
+                httpBasic().disable()
+                .csrf().disable()
+                .formLogin().loginPage("/login")
+                .and()
+                .logout().logoutSuccessUrl("/")
+                .invalidateHttpSession(true)
+                .and().authorizeRequests()
+                .anyRequest().authenticated();//其他的路径需要认证后的用户可以访问
     }
 }

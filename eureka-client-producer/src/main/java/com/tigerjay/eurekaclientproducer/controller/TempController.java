@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 
 
-@RestController
+@RestController("/producer")
 public class TempController {
     private final Logger logger = LoggerFactory.getLogger(TempController.class);
     @Autowired
