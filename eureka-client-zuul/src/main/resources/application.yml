@@ -28,18 +28,20 @@ zuul:
   #ignored-services: producer
   #add-host-header: true
   ratelimit:
-    key-prefix: spring-cloud-book #按粒度拆分的临时变量key前缀
-    enabled: true
-    repository: redis
-    behind-proxy: true
-    default-policy:
-      limit: 2
-      quota: 1
-      refresh-interval: 3
-      type:
-        - user
-        - orign
-        - url
+     key-prefix: your-prefix
+     enabled: true
+     repository: REDIS
+     behind-proxy: true
+     add-response-headers: true
+     default-policy-list: #optional - will apply unless specific policy exists
+       - limit: 10 #optional - request number limit per refresh interval window
+         quota: 1000 #optional - request time limit per refresh interval window (in seconds)
+         refresh-interval: 60 #default value (in seconds)
+         type: #optional
+           - user
+           - origin
+           - url
+           - httpmethod
 
 eureka:
   client:
@@ -63,4 +65,7 @@ security:
       jwt:
         key-value: springcloud123 #这里的值如果跟authserver中的JwtAccessTokenConverter不一致会导致一直重定向
 
-
+#设置zuul超时时间，serviceId方式，如果为url方式，使用zuul.host.*
+ribbon:
+  ReadTimeout: 60000  # 单位毫秒数
+  SocketTimeout: 60000
