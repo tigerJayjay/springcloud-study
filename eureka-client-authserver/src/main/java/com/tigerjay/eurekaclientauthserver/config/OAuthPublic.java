@@ -16,7 +16,8 @@ public class OAuthPublic {
     @Bean
     protected JwtAccessTokenConverter jwtAccessTokenConverter(){
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setSigningKey("springcloud123");//这里使用对称加密方式生成签名
+        //这里使用对称加密方式生成签名
+        converter.setSigningKey("springcloud123");
         return converter;
     }
 }

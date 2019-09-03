@@ -1,8 +1,6 @@
 package com.tigerjay.eurekaclientauthserver.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -35,11 +33,13 @@ public class OAuthServerConfiguration extends AuthorizationServerConfigurerAdapt
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients
                 .inMemory()
-                .withClient("zuul_server") //zuul中配置的client-id
+                 //zuul中配置的client-id
+                .withClient("zuul_server")
                 .secret("secret")
                 .scopes("WRIGTH").autoApprove(true)
                 .authorities("WRIGTH_READ","WRIGTH_WRITE")
-                .authorizedGrantTypes("implicit","refresh_token","password","authorization_code");//客户端使用的授权类型，这里使用的是password,需要配置authenticationManager
+                //客户端使用的授权类型，这里使用的是password,需要配置authenticationManager
+                .authorizedGrantTypes("implicit","refresh_token","password","authorization_code");
     }
 
 

@@ -27,9 +27,6 @@ public class TestService {
     },fallbackMethod = "fall")
     @CacheResult
     public String getToken(String id){
-        //测试hystrix缓存
-      /*  String res =  restTemplate.getForObject("http://producer/get",String.class,id);
-        System.out.print(res);*/
         //测试hystrix自定义策略不会对通过线程传递的request产生影响
         System.out.print(((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest().getHeader("token"));
         return tokenClient.getToken();
