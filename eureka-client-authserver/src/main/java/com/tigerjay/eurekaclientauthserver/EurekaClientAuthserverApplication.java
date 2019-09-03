@@ -23,27 +23,4 @@ public class EurekaClientAuthserverApplication extends WebSecurityConfigurerAdap
     public static void main(String[] args) {
         SpringApplication.run(EurekaClientAuthserverApplication.class, args);
     }
-
-    @Bean(name = BeanIds.AUTHENTICATION_MANAGER)
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
-
-    @Bean
-    public static NoOpPasswordEncoder passwordEncoder(){
-        return (NoOpPasswordEncoder)NoOpPasswordEncoder.getInstance();
-    }
-    /**
-     *
-     * @param auth
-     * @throws Exception
-     */
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("guest").password("guest").authorities("WRIGTH_READ")
-                .and()
-                .withUser("admin").password("admin").authorities("WRIGTH_READ","WRIGTH_WRITE");
-    }
 }
