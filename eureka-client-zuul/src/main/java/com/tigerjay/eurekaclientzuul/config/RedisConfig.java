@@ -10,9 +10,12 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
-
+/**
+ * 暂时没用，本来是作为ratelimit的redis存储，但是ratelimit自己已经实现了StringRedisTemplate
+ * com.marcosbarbero.cloud.autoconfigure.zuul.ratelimit.RateLimitAutoConfiguration
+ */
 public class RedisConfig {
-    @Bean(name="rateLimiterRedisTemplate")
+    @Bean
     public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
         RedisTemplate<Object, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(connectionFactory);

@@ -62,7 +62,11 @@
             <artifactId>spring-cloud-zuul-ratelimit</artifactId>
             <version>LATEST</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.tigerJay</groupId>
+            <artifactId>eureka-database</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 
