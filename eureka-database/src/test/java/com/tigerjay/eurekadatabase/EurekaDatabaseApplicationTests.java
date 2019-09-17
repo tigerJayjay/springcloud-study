@@ -1,5 +1,7 @@
 package com.tigerjay.eurekadatabase;
 
+import com.tigerjay.eurekadatabase.entity.User;
+import com.tigerjay.eurekadatabase.mapper.UserMapper;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,7 +15,7 @@ import java.util.List;
 @SpringBootTest
 public class EurekaDatabaseApplicationTests {
 
-  /*  @Autowired
+    @Autowired
     private UserMapper userMapper;
 
     @Test
@@ -22,5 +24,5 @@ public class EurekaDatabaseApplicationTests {
         List<User> userList = userMapper.selectList(null);
         Assert.assertEquals(5, userList.size());
         userList.forEach(System.out::println);
-    }*/
+    }
 }
