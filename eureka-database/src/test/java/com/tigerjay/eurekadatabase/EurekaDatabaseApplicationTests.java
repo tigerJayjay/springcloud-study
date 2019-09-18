@@ -1,7 +1,7 @@
 package com.tigerjay.eurekadatabase;
 
-import com.tigerjay.eurekadatabase.entity.User;
-import com.tigerjay.eurekadatabase.mapper.UserMapper;
+import com.tigerjay.eurekadatabase.entity.DynamicProperty;
+import com.tigerjay.eurekadatabase.mapper.DynamicPropertyMapper;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,13 +16,13 @@ import java.util.List;
 public class EurekaDatabaseApplicationTests {
 
     @Autowired
-    private UserMapper userMapper;
+    private DynamicPropertyMapper dynamicPropertyMapper;
 
     @Test
     public void testSelect() {
         System.out.println(("----- selectAll method test ------"));
-        List<User> userList = userMapper.selectList(null);
-        Assert.assertEquals(5, userList.size());
+        List<DynamicProperty> userList = dynamicPropertyMapper.selectList(null);
+        Assert.assertEquals(1, userList.size());
         userList.forEach(System.out::println);
     }
 }

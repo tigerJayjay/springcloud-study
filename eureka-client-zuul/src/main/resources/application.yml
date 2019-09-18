@@ -12,6 +12,14 @@ spring:
         min-idle: 1
         max-idle: 8
         max-wait: 2000
+  profiles:
+    include: database,default
+
+
+# Logger Config
+logging:
+  level:
+    com.baomidou.mybatisplus.samples.quickstart: debug
 
 server:
   port: 1119
@@ -69,3 +77,4 @@ security:
 ribbon:
   ReadTimeout: 60000  # 单位毫秒数
   SocketTimeout: 60000
+

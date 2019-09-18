@@ -55,7 +55,7 @@ public class CodeGenerator {
 
             // 数据源配置
             DataSourceConfig dsc = new DataSourceConfig();
-            dsc.setUrl("jdbc:mysql://localhost:3306/salemanage?useUnicode=true&useSSL=false&characterEncoding=utf8");
+            dsc.setUrl("jdbc:mysql://localhost:3306/springcloud?useUnicode=true&useSSL=false&characterEncoding=utf8");
             // dsc.setSchemaName("public");
             dsc.setDriverName("com.mysql.jdbc.Driver");
             dsc.setUsername("root");
@@ -110,10 +110,10 @@ public class CodeGenerator {
 
             // 配置自定义输出模板
             //指定自定义模板路径，注意不要带上.ftl/.vm, 会根据使用的模板引擎自动识别
-            // templateConfig.setEntity("templates/entity2.java");
-            // templateConfig.setService();
-            // templateConfig.setController();
-
+             //templateConfig.setEntity("templates/entity2.java");
+             templateConfig.setService("templates/service.java");
+             templateConfig.setController("templates/controller.java");
+             templateConfig.setServiceImpl("templates/serviceImpl.java");
             templateConfig.setXml(null);
             mpg.setTemplate(templateConfig);
 

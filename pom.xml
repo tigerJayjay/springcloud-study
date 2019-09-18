@@ -37,6 +37,14 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
     </dependencies>
+    <modules>
+        <module>eureka-client-zuul</module>
+        <module>eureka-client-authserver</module>
+        <module>eureka-database</module>
+        <module>eureka-client-consumer</module>
+        <module>eureka-client-producer</module>
+        <module>eureka-server</module>
+    </modules>
 
     <build>
         <plugins>
