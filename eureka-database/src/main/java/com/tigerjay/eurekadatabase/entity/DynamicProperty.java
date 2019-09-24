@@ -27,6 +27,15 @@ public class DynamicProperty implements Serializable {
 
     private String description;
 
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;

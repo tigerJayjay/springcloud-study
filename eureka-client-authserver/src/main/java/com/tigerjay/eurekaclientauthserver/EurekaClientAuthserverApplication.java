@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @EnableDiscoveryClient
 @SpringBootApplication
-public class EurekaClientAuthserverApplication extends WebSecurityConfigurerAdapter {
+public class EurekaClientAuthserverApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(EurekaClientAuthserverApplication.class, args);
