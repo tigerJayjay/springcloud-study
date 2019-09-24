@@ -40,7 +40,9 @@ Hystrix Dashboard：仪表盘是根据一段时间内的请求情况生成的可
 	2.在客户端添加FeignClient接口
 	3.搭建Hystrix Dashboard工程
 		添加dashboard依赖，开启应用，访问locahost:port/hystrix，按照页面中的提示访问producer的端点
+		
 异常处理  有一种类型的异常不会触发fallback，抛出HystrixBadRquestException
+
 请求缓存
 	1.初始化上下文：继承HandlerInterceptor，实现preHandle和afeterCompletion
 		  在preHandle方法中初始化HystrixRequestContext.initializeContext();
@@ -48,6 +50,7 @@ Hystrix Dashboard：仪表盘是根据一段时间内的请求情况生成的可
 	继承方式：  继承HystrixCommand，重写getCacheKey方法，保证同一个请求返回同样的键值，清除缓存，调用HystrixRequestCache的
 		  clean方法
 	注解方式：@CacheResult @CacheRemove
+	
 Hystrix request collapser：可以将多个请求合并到一个线程中。
 	1.和缓存一样，需要先实现Hystrix上下文的初始化和关闭。
 	2.在需要合并请求的方法上添加@HystrixCollapser注解，包含以下属性：
@@ -55,12 +58,10 @@ Hystrix request collapser：可以将多个请求合并到一个线程中。
 		2.collapserProperties=(@HystrixProperty{name="timerDelayInmilliseconds",value="1000)在多少毫秒内的请求需要合并
 		3.scope：request,global request表示同一个请求范围内内，global表示不同请求全范围局内的请求
 	3.在真实调用的方法上添加@HystrixCommand注解
-
-
-
+	
 Zuul	面向服务治理，服务编排，是从设备和网站到后端应用程序所有请求的前门，提供可配置的对外url和服务之间的映射关系
 
-	简单例子
+简单例子
 	1.在启动类上添加@EnableZuulProxy注解
 	2.在properties文件中添加路由规则：
 		zuul.routes.服务名.path=/client/**
@@ -137,4 +138,3 @@ Zuul	面向服务治理，服务编排，是从设备和网站到后端应用程
 
 	7.主动流量管理
 
-	
