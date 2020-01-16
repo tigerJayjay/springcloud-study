@@ -25,7 +25,7 @@ public class EurekaClientZuulApplication extends WebSecurityConfigurerAdapter {
         http.
                 httpBasic().disable()
                 .csrf().disable()
-                .formLogin().loginPage("/login")
+                .formLogin()
                 .and()
                 .logout().logoutSuccessUrl("/")
                 .invalidateHttpSession(true)

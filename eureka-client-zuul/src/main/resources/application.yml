@@ -28,7 +28,7 @@ server:
 zuul:
   routes:
     producer:
-      path: /producer/*
+      path: /producer/**
       serviceId: producer
   sensitiveHeaders: #如果不配置 权限会无法传到下级服务 导致访问下级服务无权限
   #prefix: /zu

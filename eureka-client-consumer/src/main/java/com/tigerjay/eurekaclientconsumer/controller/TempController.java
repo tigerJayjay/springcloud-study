@@ -36,7 +36,7 @@ public class TempController {
     @GetMapping("/consumerGet")
     @CacheResult
     public String temp(String a){
-        return restTemplate.getForEntity("http://producer/get",String.class,a).getBody();
+        return restTemplate.getForEntity("http://ZUUL-SERVER/producer/get",String.class,a).getBody();
     }
 
     @GetMapping("/getStore")

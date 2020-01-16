@@ -15,7 +15,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-
     @Bean
     public static NoOpPasswordEncoder passwordEncoder(){
         return (NoOpPasswordEncoder)NoOpPasswordEncoder.getInstance();
